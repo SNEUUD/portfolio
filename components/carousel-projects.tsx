@@ -7,20 +7,20 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export function Projects() {
+export function CarouselProjects() {
   const projects = [
-    { name: "cesizen" },
+    { name: "Cesizen" },
     { name: "(Re)sources relationnelles" },
   ];
   return (
-    <Carousel className="w-full max-w-5xl mx-auto">
-      <CarouselContent className="-ml-4">
+    <Carousel>
+      <CarouselContent>
         {Array.from({ length: projects.length }).map((_, index) => (
-          <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-            <div className="p-4">
+          <CarouselItem key={index}>
+            <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-video items-center justify-center p-6">
-                  <span className="text-4xl font-semibold text-gray-900 dark:text-gray-50">
+                  <span className="text-4xl font-semibold">
                     {projects[index].name}
                   </span>
                 </CardContent>

@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Projects } from "@/components/projects";
+import { CarouselProjects } from "@/components/carousel-projects";
 
 export default function Home() {
   const navLinks = [
@@ -96,7 +96,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mes projets
               </h2>
-              <Projects />
+              <CarouselProjects />
             </section>
           </section>
         </div>
