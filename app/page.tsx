@@ -9,17 +9,42 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CarouselProjects } from "@/components/carousel-projects";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const navLinks = [
     { name: "Accueil", href: "/" },
     { name: "Projets", href: "/projets" },
     { name: "Compétences", href: "/blog" },
+  ];
+
+  const timelineData = [
+    {
+      date: "2025-2027",
+      title: "CESI - Le Mans",
+      content: "Manager en architecture et applications logicielles des SI en alternance",
+    },
+    {
+      date: "2024-2025",
+      title: "CESI - Le Mans",
+      content: "Bachelor Concepteur Développeur d’Applications en alternance",
+    },
+    {
+      date: "2023 - 2024",
+      title: "ITM Graduate School - Le Mans",
+      content: "Bachelor Journalisme Automobile",
+    },
+    {
+      date: "2021 - 2023",
+      title: "Saint Charles Sainte Croix - Le Mans",
+      content: "BTS SIO SLAM",
+    },
   ];
 
   const skillTags = [
@@ -135,6 +160,33 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mon parcours
               </h2>
+              <div className="relative max-w-2xl mx-auto">
+                <Separator
+                  orientation="vertical"
+                  className="bg-muted absolute left-2 top-4 h-full"
+                />
+                {timelineData.map((entry, index) => (
+                  <div key={index} className="relative mb-10 pl-8">
+                    <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full z-10" />
+                    <h5 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
+                      {entry.date}
+                    </h5>
+                    <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
+                      {entry.title}
+                    </h4>
+                    <Card className="my-3 border-none shadow-none text-left">
+                      <CardContent className="px-3">
+                        <div
+                          className="prose dark:prose-invert text-foreground"
+                          dangerouslySetInnerHTML={{
+                            __html: entry.content,
+                          }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
             </section>
           </section>
         </div>
