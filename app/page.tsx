@@ -22,6 +22,24 @@ export default function Home() {
     { name: "Compétences", href: "/blog" },
   ];
 
+  const skillTags = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Git",
+    "Tailwind",
+    "Shadcn UI",
+    "Python",
+    "GraphQL",
+    "mySQL",
+    "PostgreSQL",
+    "Docker",
+  ];
+
   return (
     <div className="min-h-screen">
       <header className="flex items-center justify-between px-6 py-4">
@@ -97,6 +115,26 @@ export default function Home() {
                 Mes projets
               </h2>
               <CarouselProjects />
+            </section>
+            <section className="py-12">
+              <h2 className="text-4xl font-bold text-center mb-6">
+                Mes compétences
+              </h2>
+              <div className="grid grid-cols-5 gap-4">
+                {skillTags.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="p-3 text-sm font-medium text-center rounded-lg"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="py-12">
+              <h2 className="text-4xl font-bold text-center mb-6">
+                Mon parcours
+              </h2>
             </section>
           </section>
         </div>
