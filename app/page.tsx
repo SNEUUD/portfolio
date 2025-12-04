@@ -28,7 +28,8 @@ export default function Home() {
     {
       date: "2025-2027",
       title: "CESI - Le Mans",
-      content: "Manager en architecture et applications logicielles des SI en alternance",
+      content:
+        "Manager en architecture et applications logicielles des SI en alternance",
     },
     {
       date: "2024-2025",
@@ -79,9 +80,6 @@ export default function Home() {
             </Link>
           ))}
         </nav>
-        <div>
-          <ModeToggle />
-        </div>
       </header>
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
@@ -135,6 +133,11 @@ export default function Home() {
                 </a>
               </Button>
             </div>
+            <section className="py-12">
+              <h2 className="text-4xl font-bold text-center mb-6">
+                À propos de moi
+              </h2>
+            </section>
             <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mes projets
@@ -191,6 +194,9 @@ export default function Home() {
           </section>
         </div>
       </main>
+      <div className="fixed bottom-4 right-4 z-50">
+        <ModeToggle />
+      </div>
     </div>
   );
 }
