@@ -1,5 +1,4 @@
 import { ModeToggle } from "@/components/theme-button";
-import Link from "next/link";
 import {
   Dialog,
   DialogClose,
@@ -18,11 +17,6 @@ import { CarouselProjects } from "@/components/carousel-projects";
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
-  const navLinks = [
-    { name: "Accueil", href: "/" },
-    { name: "Projets", href: "/projets" },
-    { name: "Compétences", href: "/blog" },
-  ];
 
   const timelineData = [
     {
@@ -68,22 +62,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <header className="flex items-center justify-between px-6 py-4">
-        <nav className="flex space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      </header>
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto">
-          <section className="text-center mb-16">
+          <section className="text-center">
             <h1 className="text-5xl font-extrabold text-gray-900 dark:text-gray-50 mb-6">
               CRÉPIN Christopher
             </h1>
@@ -132,12 +113,30 @@ export default function Home() {
                   Télécharger mon CV
                 </a>
               </Button>
+              <Button asChild variant="outline">
+                <a 
+                  href="[VOTRE_URL_LINKEDIN]"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a 
+                  href="https://github.com/SNEUUD"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </Button>
             </div>
-            <section className="py-12">
+            {/* <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-6">
                 À propos de moi
               </h2>
-            </section>
+            </section> */}
             <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mes projets
@@ -191,6 +190,12 @@ export default function Home() {
                 ))}
               </div>
             </section>
+            <footer className="text-center">
+              <p className="text-sm text-gray-500">
+                © {new Date().getFullYear()} CRÉPIN Christopher. Tous droits
+                réservés.
+              </p>
+            </footer>
           </section>
         </div>
       </main>
