@@ -115,7 +115,7 @@ export default function Home() {
               </Button>
               <Button asChild variant="outline">
                 <a 
-                  href="[VOTRE_URL_LINKEDIN]"
+                  href="https://www.linkedin.com/in/christopher-cr%C3%A9pin/"
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
