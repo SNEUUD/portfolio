@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { ModeToggle } from "@/components/theme-button";
 import {
   Dialog,
@@ -15,8 +18,41 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CarouselProjects } from "@/components/carousel-projects";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.target);
+    const data = {
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        toast.success("Message envoyé !");
+        e.target.reset();
+        setOpen(false);
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      toast.error("Mince, ça n'a pas marché...");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const timelineData = [
     {
@@ -45,19 +81,22 @@ export default function Home() {
   const skillTags = [
     "HTML",
     "CSS",
+    "Node.js",
     "JavaScript",
     "TypeScript",
     "React",
     "Next.js",
-    "Node.js",
-    "Git",
     "Tailwind",
     "Shadcn UI",
     "Python",
     "GraphQL",
-    "mySQL",
+    "MySQL",
     "PostgreSQL",
+    "Git",
     "Docker",
+    "Linux",
+    "CI/CD",
+    "Nginx",
   ];
 
   return (
@@ -72,22 +111,24 @@ export default function Home() {
               Manager en architecture et applications logicielles des SI
             </p>
             <div className="flex justify-center space-x-4 mt-8 mb-12">
-              <Dialog>
-                <form>
-                  <DialogTrigger asChild>
-                    <Button variant="default">Me contacter</Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="default">Me contacter</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <form onSubmit={handleSubmit}>
                     <DialogHeader>
                       <DialogTitle>Me contacter</DialogTitle>
                     </DialogHeader>
-                    <div className="grid gap-4">
+                    <div className="grid gap-4 py-4">
                       <div className="grid gap-3">
                         <Label htmlFor="email">Email</Label>
                         <Input
                           id="email"
                           name="email"
+                          type="email"
                           placeholder="Votre email"
+                          required
                         />
                       </div>
                       <div className="grid gap-3">
@@ -96,17 +137,22 @@ export default function Home() {
                           id="message"
                           name="message"
                           placeholder="Votre message"
+                          required
                         />
                       </div>
                     </div>
                     <DialogFooter>
                       <DialogClose asChild>
-                        <Button variant="outline">Annuler</Button>
+                        <Button variant="outline" type="button">
+                          Annuler
+                        </Button>
                       </DialogClose>
-                      <Button type="submit">Envoyer</Button>
+                      <Button type="submit" disabled={loading}>
+                        {loading ? "Envoi..." : "Envoyer"}
+                      </Button>
                     </DialogFooter>
-                  </DialogContent>
-                </form>
+                  </form>
+                </DialogContent>
               </Dialog>
               <Button asChild variant="outline">
                 <a href="/CV.pdf" download="CV_Christopher_CREPIN.pdf">
@@ -114,18 +160,18 @@ export default function Home() {
                 </a>
               </Button>
               <Button asChild variant="outline">
-                <a 
+                <a
                   href="https://www.linkedin.com/in/christopher-cr%C3%A9pin/"
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
                 </a>
               </Button>
               <Button asChild variant="outline">
-                <a 
+                <a
                   href="https://github.com/SNEUUD"
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
@@ -144,14 +190,20 @@ export default function Home() {
               <CarouselProjects />
             </section>
             <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-6">
+              <h2 className="text-4xl font-bold text-center mb-10">
                 Mes compétences
               </h2>
-              <div className="grid grid-cols-5 gap-4">
+              <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
                 {skillTags.map((skill, index) => (
                   <div
                     key={index}
-                    className="p-3 text-sm font-medium text-center rounded-lg"
+                    className="
+                    /* Largeur de base pour simuler 5 colonnes (en tenant compte du gap) */
+                    w-[calc(20%-1rem)] min-w-[120px] 
+                    p-3 text-sm font-semibold text-center 
+                    rounded-xl border border-border bg-card text-card-foreground
+                    shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors
+                  "
                   >
                     {skill}
                   </div>
