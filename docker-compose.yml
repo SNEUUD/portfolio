@@ -7,3 +7,10 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    external: true
+    name: nginx_default
