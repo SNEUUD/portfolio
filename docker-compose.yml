@@ -10,6 +10,7 @@ services:
     networks:
       - nginx_network
 
+# For nginx-proxy
 networks:
   nginx_network:
     external: true

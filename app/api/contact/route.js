@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
+
+    if (!process.env.DISCORD_WEBHOOK_URL) {
+      return NextResponse.json({ error: "Configuration Discord manquante" }, { status: 500 });
+    }
+
     const { email, message } = await request.json();
 
     const discordPayload = {
@@ -24,10 +29,11 @@ export async function POST(request) {
       body: JSON.stringify(discordPayload),
     });
 
-    if (!response.ok) throw new Error('Erreur Discord');
+    if (!response.ok) throw new Error(`Discord a répondu avec le statut ${response.status}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error("Erreur API Contact:", error); // Utile pour voir les logs serveur
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

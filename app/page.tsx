@@ -34,9 +34,16 @@ export default function Home() {
       message: formData.get("message"),
     };
 
+    // Récupération du préfixe configuré dans le .env
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
     try {
-      const res = await fetch("/api/contact", {
+      // On concatène le basePath avec la route de l'API
+      const res = await fetch(`${basePath}/api/contact`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
 
@@ -45,10 +52,11 @@ export default function Home() {
         e.target.reset();
         setOpen(false);
       } else {
-        throw new Error();
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Erreur lors de l'envoi");
       }
-    } catch (err) {
-      toast.error("Mince, ça n'a pas marché...");
+    } catch (err: any) {
+      toast.error(err.message || "Mince, ça n'a pas marché...");
     } finally {
       setLoading(false);
     }
@@ -155,7 +163,11 @@ export default function Home() {
                 </DialogContent>
               </Dialog>
               <Button asChild variant="outline">
-                <a href="/CV.pdf" download="CV_Christopher_CREPIN.pdf">
+                {/* On utilise process.env ici aussi pour être cohérent avec le chemin des assets */}
+                <a
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV.pdf`}
+                  download="CV_Christopher_CREPIN.pdf"
+                >
                   Télécharger mon CV
                 </a>
               </Button>
@@ -178,17 +190,14 @@ export default function Home() {
                 </a>
               </Button>
             </div>
-            {/* <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-6">
-                À propos de moi
-              </h2>
-            </section> */}
+
             <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mes projets
               </h2>
               <CarouselProjects />
             </section>
+
             <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-10">
                 Mes compétences
@@ -197,19 +206,14 @@ export default function Home() {
                 {skillTags.map((skill, index) => (
                   <div
                     key={index}
-                    className="
-                    /* Largeur de base pour simuler 5 colonnes (en tenant compte du gap) */
-                    w-[calc(20%-1rem)] min-w-[120px] 
-                    p-3 text-sm font-semibold text-center 
-                    rounded-xl border border-border bg-card text-card-foreground
-                    shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors
-                  "
+                    className="w-[calc(20%-1rem)] min-w-[120px] p-3 text-sm font-semibold text-center rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
                     {skill}
                   </div>
                 ))}
               </div>
             </section>
+
             <section className="py-12">
               <h2 className="text-4xl font-bold text-center mb-6">
                 Mon parcours
@@ -242,6 +246,7 @@ export default function Home() {
                 ))}
               </div>
             </section>
+
             <footer className="text-center">
               <p className="text-sm text-gray-500">
                 © {new Date().getFullYear()} CRÉPIN Christopher. Tous droits
