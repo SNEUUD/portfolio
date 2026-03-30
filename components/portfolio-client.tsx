@@ -21,10 +21,17 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 
 export default function PortfolioClient({
+  profile,
   timelineData,
   skillTags,
   projects,
 }: {
+  profile: {
+    full_name?: string;
+    title?: string;
+    github_url?: string;
+    linkedin_url?: string;
+  };
   timelineData: any[];
   skillTags: string[];
   projects: any[];
@@ -76,10 +83,10 @@ export default function PortfolioClient({
         <div className="max-w-4xl mx-auto">
           <section className="text-center">
             <h1 className="text-5xl font-extrabold text-gray-900 dark:text-gray-50 mb-6">
-              CRÉPIN Christopher
+              {profile?.full_name}
             </h1>
             <p className="text-2xl text-gray-600 dark:text-gray-400 mb-6">
-              Manager en architecture et applications logicielles des SI
+              {profile?.title}
             </p>
             <div className="flex justify-center space-x-4 mt-8 mb-12">
               <Dialog open={open} onOpenChange={setOpen}>
@@ -136,7 +143,7 @@ export default function PortfolioClient({
               </Button>
               <Button asChild variant="outline">
                 <a
-                  href="https://www.linkedin.com/in/christopher-cr%C3%A9pin/"
+                  href={profile?.linkedin_url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -145,7 +152,7 @@ export default function PortfolioClient({
               </Button>
               <Button asChild variant="outline">
                 <a
-                  href="https://github.com/SNEUUD"
+                  href={profile?.github_url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
