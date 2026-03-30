@@ -29,6 +29,7 @@ export default function PortfolioClient({
   profile: {
     full_name?: string;
     title?: string;
+    bio?: string;
     github_url?: string;
     linkedin_url?: string;
   };
@@ -144,8 +145,8 @@ export default function PortfolioClient({
               </Dialog>
               <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV.pdf`}
-                  download="CV_Christopher_CREPIN.pdf"
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}cv.pdf`}
+                  download="cv.pdf"
                 >
                   Télécharger mon CV
                 </a>
@@ -169,6 +170,15 @@ export default function PortfolioClient({
                 </a>
               </Button>
             </div>
+
+            <section className="py-12 text-left">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
+                À propos de moi
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 text-center">
+                {profile?.bio}
+              </p>
+            </section>
 
             <section className="py-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
