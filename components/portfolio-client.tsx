@@ -79,21 +79,23 @@ export default function PortfolioClient({
 
   return (
     <div className="min-h-screen">
-      <main className="container mx-auto px-4 py-24">
+      <main className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
         <div className="max-w-4xl mx-auto">
           <section className="text-center">
-            <h1 className="text-5xl font-extrabold text-gray-900 dark:text-gray-50 mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-50 mb-6">
               {profile?.full_name}
             </h1>
-            <p className="text-2xl text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-6 px-4 sm:px-0">
               {profile?.title}
             </p>
-            <div className="flex justify-center space-x-4 mt-8 mb-12">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-8 mb-12 max-w-2xl mx-auto">
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="default">Me contacter</Button>
+                  <Button variant="default" className="w-full sm:w-auto">
+                    Me contacter
+                  </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] w-[95vw] max-h-[90vh] overflow-y-auto">
                   <form onSubmit={handleSubmit}>
                     <DialogHeader>
                       <DialogTitle>Me contacter</DialogTitle>
@@ -119,21 +121,28 @@ export default function PortfolioClient({
                         />
                       </div>
                     </div>
-                    <DialogFooter>
+                    <DialogFooter className="flex-col sm:flex-row gap-2">
                       <DialogClose asChild>
-                        <Button variant="outline" type="button">
+                        <Button
+                          variant="outline"
+                          type="button"
+                          className="w-full sm:w-auto"
+                        >
                           Annuler
                         </Button>
                       </DialogClose>
-                      <Button type="submit" disabled={loading}>
+                      <Button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full sm:w-auto"
+                      >
                         {loading ? "Envoi..." : "Envoyer"}
                       </Button>
                     </DialogFooter>
                   </form>
                 </DialogContent>
               </Dialog>
-              <Button asChild variant="outline">
-                {/* On utilise process.env ici aussi pour être cohérent avec le chemin des assets */}
+              <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
                   href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV.pdf`}
                   download="CV_Christopher_CREPIN.pdf"
@@ -141,7 +150,7 @@ export default function PortfolioClient({
                   Télécharger mon CV
                 </a>
               </Button>
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
                   href={profile?.linkedin_url}
                   target="_blank"
@@ -150,7 +159,7 @@ export default function PortfolioClient({
                   LinkedIn
                 </a>
               </Button>
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
                   href={profile?.github_url}
                   target="_blank"
@@ -162,21 +171,21 @@ export default function PortfolioClient({
             </div>
 
             <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
                 Mes projets
               </h2>
               <CarouselProjects projects={projects} />
             </section>
 
             <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
                 Mes compétences
               </h2>
-              <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 max-w-4xl mx-auto px-4">
                 {skillTags.map((skill, index) => (
                   <div
                     key={index}
-                    className="w-[calc(20%-1rem)] min-w-[120px] p-3 text-sm font-semibold text-center rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="w-[calc(33.333%-0.5rem)] sm:w-[calc(20%-1rem)] min-w-[100px] sm:min-w-[120px] p-2 sm:p-3 text-xs sm:text-sm font-semibold text-center rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
                     {skill}
                   </div>
@@ -185,27 +194,30 @@ export default function PortfolioClient({
             </section>
 
             <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
                 Mon parcours
               </h2>
-              <div className="relative max-w-2xl mx-auto">
+              <div className="relative max-w-2xl mx-auto px-4">
                 <Separator
                   orientation="vertical"
-                  className="bg-muted absolute left-2 top-4 h-full"
+                  className="bg-muted absolute left-2 sm:left-4 top-4 h-full"
                 />
                 {timelineData.map((entry, index) => (
-                  <div key={index} className="relative mb-10 pl-8">
-                    <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full z-10" />
-                    <h5 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
+                  <div
+                    key={index}
+                    className="relative mb-8 sm:mb-10 pl-6 sm:pl-8"
+                  >
+                    <div className="bg-foreground absolute left-0 sm:left-2 top-3.5 flex size-3 sm:size-4 items-center justify-center rounded-full z-10" />
+                    <h5 className="text-sm sm:text-md text-muted-foreground tracking-tight text-left mb-1 pl-2 sm:pl-3">
                       {entry.date}
                     </h5>
-                    <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
+                    <h4 className="rounded-xl py-2 text-lg sm:text-xl font-bold tracking-tight text-left pl-2 sm:pl-3">
                       {entry.title}
                     </h4>
                     <Card className="my-3 border-none shadow-none text-left">
-                      <CardContent className="px-3">
+                      <CardContent className="px-2 sm:px-3">
                         <div
-                          className="prose dark:prose-invert text-foreground"
+                          className="prose prose-sm sm:prose dark:prose-invert text-foreground"
                           dangerouslySetInnerHTML={{
                             __html: entry.content,
                           }}
@@ -217,9 +229,10 @@ export default function PortfolioClient({
               </div>
             </section>
 
-            <footer className="text-center">
-              <p className="text-sm text-gray-500">
-                © {new Date().getFullYear()} CRÉPIN Christopher. Tous droits
+            <footer className="text-center px-4">
+              <p className="text-xs sm:text-sm text-gray-500">
+                © {new Date().getFullYear()}{" "}
+                {profile?.full_name || "CRÉPIN Christopher"}. Tous droits
                 réservés.
               </p>
             </footer>
