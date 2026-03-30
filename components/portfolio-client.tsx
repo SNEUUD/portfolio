@@ -194,30 +194,27 @@ export default function PortfolioClient({
             </section>
 
             <section className="py-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
+              <h2 className="text-4xl font-bold text-center mb-6">
                 Mon parcours
               </h2>
-              <div className="relative max-w-2xl mx-auto px-4">
+              <div className="relative max-w-2xl mx-auto">
                 <Separator
                   orientation="vertical"
-                  className="bg-muted absolute left-2 sm:left-4 top-4 h-full"
+                  className="bg-muted absolute left-2 top-4 h-full"
                 />
                 {timelineData.map((entry, index) => (
-                  <div
-                    key={index}
-                    className="relative mb-8 sm:mb-10 pl-6 sm:pl-8"
-                  >
-                    <div className="bg-foreground absolute left-0 sm:left-2 top-3.5 flex size-3 sm:size-4 items-center justify-center rounded-full z-10" />
-                    <h5 className="text-sm sm:text-md text-muted-foreground tracking-tight text-left mb-1 pl-2 sm:pl-3">
+                  <div key={index} className="relative mb-10 pl-8">
+                    <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full z-10" />
+                    <h5 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
                       {entry.date}
                     </h5>
-                    <h4 className="rounded-xl py-2 text-lg sm:text-xl font-bold tracking-tight text-left pl-2 sm:pl-3">
+                    <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
                       {entry.title}
                     </h4>
                     <Card className="my-3 border-none shadow-none text-left">
-                      <CardContent className="px-2 sm:px-3">
+                      <CardContent className="px-3">
                         <div
-                          className="prose prose-sm sm:prose dark:prose-invert text-foreground"
+                          className="prose dark:prose-invert text-foreground"
                           dangerouslySetInnerHTML={{
                             __html: entry.content,
                           }}
