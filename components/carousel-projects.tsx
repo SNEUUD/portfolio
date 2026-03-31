@@ -65,7 +65,8 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
                       onClick={() => window.open(project.link, "_blank")}
                       className="w-full gap-2 text-sm"
                     >
-                      Voir le projet <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      Voir le projet{" "}
+                      <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </Button>
                     {project.consigne && (
                       <Button
@@ -73,7 +74,8 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
                         variant="ghost"
                         className="w-full gap-2 text-sm"
                       >
-                        <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5 opacity-60" /> Consigne
+                        <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5 opacity-60" />{" "}
+                        Consigne
                       </Button>
                     )}
                   </div>
