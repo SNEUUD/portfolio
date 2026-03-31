@@ -23,7 +23,6 @@ db.exec(`
     description TEXT,
     tech TEXT,
     link TEXT,
-    consigne TEXT,
     role TEXT
   );
 
@@ -88,7 +87,7 @@ const runSeed = db.transaction(() => {
 
   // --- PROJECTS ---
   const insertProject = db.prepare(
-    "INSERT INTO projects (name, description, tech, link, consigne, role) VALUES (?, ?, ?, ?, ?, ?)"
+    "INSERT INTO projects (name, description, tech, link, role) VALUES (?, ?, ?, ?, ?)"
   );
   const projects = [
     {
@@ -96,7 +95,6 @@ const runSeed = db.transaction(() => {
       description: "Le site que vous consultez actuellement. Réalisé avec Next.js et TailwindCSS.",
       tech: "Next.js, TypeScript, TailwindCSS, SQLite",
       link: "https://github.com/johndoe/portfolio",
-      consigne: "Créer un portfolio pour présenter mes projets et compétences.",
       role: "Développeur Full-Stack",
     },
     {
@@ -104,13 +102,12 @@ const runSeed = db.transaction(() => {
       description: "Une plateforme de vente en ligne complète avec gestion des produits, des commandes et des utilisateurs.",
       tech: "React, Node.js, Express, MongoDB",
       link: "https://github.com/johndoe/ecommerce",
-      consigne: "Développer une solution e-commerce de A à Z.",
       role: "Développeur Back-End",
     }
   ];
 
   for (const p of projects) {
-    insertProject.run(p.name, p.description, p.tech, p.link, p.consigne, p.role);
+    insertProject.run(p.name, p.description, p.tech, p.link, p.role);
   }
 });
 
