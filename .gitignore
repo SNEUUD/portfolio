@@ -40,9 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#scripts
-scripts/seed.js
-
-# CV
+# CV (contains personal data such as phone/address, kept out of git)
 /public/CV.pdf
+/public/CV-ATS.pdf
+
+# database (generated at build time by scripts/seed.js)
 database.sqlite
+
+seed.js

@@ -14,9 +14,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://ccrepin.freeboxos.fr";
+const title = "Christopher Crépin — Développeur Full-Stack Freelance";
+const description =
+  "Développeur full-stack freelance (React, Next.js, Node.js, PHP, Python) disponible pour vos missions. Du front à l'infrastructure auto-hébergée (Docker, Coolify, Traefik), à travers mon projet phare Staylow.";
+
 export const metadata: Metadata = {
-  title: "PORTFOLIO - CREPIN Christopher",
-  description: "Portfolio de CREPIN Christopher",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: "%s — Christopher Crépin",
+  },
+  description,
+  keywords: [
+    "développeur full-stack freelance",
+    "freelance développeur web",
+    "React",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "DevOps",
+    "Staylow",
+  ],
+  authors: [{ name: "Christopher Crépin" }],
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: siteUrl,
+    siteName: "Christopher Crépin",
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -26,12 +63,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <head>
-        <link
-          rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙋🏼‍♂️</text></svg>"
-        ></link>
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
