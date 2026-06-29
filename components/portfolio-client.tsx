@@ -24,6 +24,7 @@ import { ProcessSection } from "@/components/process-section";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import type { profile as profileContent, timeline, projects as projectsContent } from "@/lib/content";
 
 export default function PortfolioClient({
   profile,
@@ -31,31 +32,20 @@ export default function PortfolioClient({
   skillsByCategory,
   projects,
 }: {
-  profile: {
-    full_name?: string;
-    title?: string;
-    availability?: string;
-    modality?: string;
-    languages?: string;
-    bio?: string;
-    email?: string;
-    location?: string;
-    avatar_url?: string;
-    github_url?: string;
-    linkedin_url?: string;
-  };
-  timelineData: any[];
+  profile: typeof profileContent;
+  timelineData: typeof timeline;
   skillsByCategory: { category: string; skills: string[] }[];
-  projects: any[];
+  projects: typeof projectsContent;
 }) {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const data = {
       email: formData.get("email"),
       message: formData.get("message"),
@@ -76,14 +66,15 @@ export default function PortfolioClient({
 
       if (res.ok) {
         toast.success("Message envoyé !");
-        e.target.reset();
+        form.reset();
         setOpen(false);
       } else {
         const errorData = await res.json();
         throw new Error(errorData.error || "Erreur lors de l'envoi");
       }
-    } catch (err: any) {
-      toast.error(err.message || "Mince, ça n'a pas marché...");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : undefined;
+      toast.error(message || "Mince, ça n'a pas marché...");
     } finally {
       setLoading(false);
     }

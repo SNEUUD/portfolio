@@ -7,8 +7,6 @@ RUN npm install
 
 COPY . .
 
-RUN node scripts/seed.js
-
 RUN npm run build
 
 EXPOSE 3000
