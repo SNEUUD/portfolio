@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -10,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface Project {
   id: number;
@@ -19,6 +20,21 @@ interface Project {
   tech: string;
   link: string;
   role: string;
+  image?: string | null;
+}
+
+function ProjectImage({ image, name }: { image?: string | null; name: string }) {
+  if (!image) return null;
+  return (
+    <div className="relative h-40 w-full overflow-hidden border-b border-border">
+      <Image
+        src={image}
+        alt={`Aperçu du projet ${name}`}
+        fill
+        className="object-cover"
+      />
+    </div>
+  );
 }
 
 export function CarouselProjects({ projects }: { projects: Project[] }) {
@@ -31,6 +47,7 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
         <div className="flex justify-center px-4">
           <div className="w-full max-w-md">
             <Card className="group relative border border-border bg-card rounded-2xl h-[560px] flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md">
+              <ProjectImage image={project.image} name={project.name} />
               <CardContent className="p-4 sm:p-6 lg:p-8 flex flex-col flex-grow gap-4 sm:gap-6">
                 <div className="space-y-1">
                   <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-foreground">
@@ -84,6 +101,7 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
             <CarouselItem key={project.id} className="pl-4 md:basis-1/2 flex">
               <div className="p-1 flex-1">
                 <Card className="group relative border border-border bg-card rounded-2xl h-[560px] flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md">
+                  <ProjectImage image={project.image} name={project.name} />
                   <CardContent className="p-4 sm:p-6 lg:p-8 flex flex-col flex-grow gap-4 sm:gap-6">
                     <div className="space-y-1">
                       <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-foreground">
