@@ -253,7 +253,7 @@ export default function PortfolioClient({
                     <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3 text-left">
                       {category}
                     </h3>
-                    <div className="flex flex-wrap gap-2 sm:gap-4">
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
                       {skills.map((skill) => (
                         <div
                           key={skill}
