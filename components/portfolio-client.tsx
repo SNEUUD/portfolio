@@ -22,7 +22,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { CarouselProjects } from "@/components/carousel-projects";
 import { ServicesSection } from "@/components/services-section";
 import { ProcessSection } from "@/components/process-section";
-import { PersonalSection } from "@/components/personal-section";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -32,7 +31,6 @@ import type {
   profile as profileContent,
   timeline,
   projects as projectsContent,
-  personalPhotos as personalPhotosContent,
 } from "@/lib/content";
 
 export default function PortfolioClient({
@@ -40,13 +38,11 @@ export default function PortfolioClient({
   timelineData,
   skillsByCategory,
   projects,
-  personalPhotos,
 }: {
   profile: typeof profileContent;
   timelineData: typeof timeline;
   skillsByCategory: { category: string; skills: string[] }[];
   projects: typeof projectsContent;
-  personalPhotos: typeof personalPhotosContent;
 }) {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -302,16 +298,6 @@ export default function PortfolioClient({
                   </div>
                 ))}
               </div>
-            </section>
-
-            <section className="py-16 sm:py-20 border-t border-border">
-              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">
-                En dehors de l&apos;écran
-              </h2>
-              <p className="text-sm text-muted-foreground mb-8 sm:mb-10">
-                Quelques instants de la vie en dehors du clavier.
-              </p>
-              <PersonalSection photos={personalPhotos} />
             </section>
 
             <footer className="pt-12 border-t border-border">
