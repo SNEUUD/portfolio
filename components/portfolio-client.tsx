@@ -24,6 +24,7 @@ import { ProcessSection } from "@/components/process-section";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { basePath } from "@/lib/utils";
 import type { profile as profileContent, timeline, projects as projectsContent } from "@/lib/content";
 
 export default function PortfolioClient({
@@ -50,9 +51,6 @@ export default function PortfolioClient({
       email: formData.get("email"),
       message: formData.get("message"),
     };
-
-    // Récupération du préfixe configuré dans le .env
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
     try {
       // On concatène le basePath avec la route de l'API
@@ -165,7 +163,7 @@ export default function PortfolioClient({
               </Dialog>
               <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV.pdf`}
+                  href={`${basePath}/CV.pdf`}
                   download="CV-Christopher-Crepin.pdf"
                 >
                   CV
@@ -173,7 +171,7 @@ export default function PortfolioClient({
               </Button>
               <Button asChild variant="outline" className="w-full sm:w-auto">
                 <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV-ATS.pdf`}
+                  href={`${basePath}/CV-ATS.pdf`}
                   download="CV-Christopher-Crepin-ATS.pdf"
                 >
                   CV (format ATS)
@@ -279,20 +277,17 @@ export default function PortfolioClient({
                 {timelineData.map((entry, index) => (
                   <div key={index} className="relative mb-10 pl-8">
                     <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full z-10" />
-                    <h5 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
+                    <h4 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
                       {entry.date}
-                    </h5>
-                    <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
-                      {entry.title}
                     </h4>
+                    <h3 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
+                      {entry.title}
+                    </h3>
                     <Card className="my-3 border-none shadow-none text-left">
                       <CardContent className="px-3">
-                        <div
-                          className="prose dark:prose-invert text-foreground"
-                          dangerouslySetInnerHTML={{
-                            __html: entry.content,
-                          }}
-                        />
+                        <p className="text-foreground whitespace-pre-line">
+                          {entry.content}
+                        </p>
                       </CardContent>
                     </Card>
                   </div>
