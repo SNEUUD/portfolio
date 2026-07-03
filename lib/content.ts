@@ -13,12 +13,6 @@ export const profile = {
 
 export const timeline = [
   {
-    date: "Depuis sept. 2024",
-    title: "Développeur en alternance — KLOCEL, Chartres",
-    content:
-      "Développement, amélioration et maintenance de Cella, logiciel de gestion d'entrepôt (WMS) de KLOCEL, au sein de l'équipe de développement. Je code les fonctionnalités demandées sur un projet client et j'assure la gestion de projet côté client (cahier des charges, planning, points d'avancement), en alternance dans le cadre de mes études au CESI.",
-  },
-  {
     date: "2025 - en cours",
     title: "Mastère — Manager en architecture & applications logicielles des SI (BAC+5)",
     content:

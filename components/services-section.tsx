@@ -18,7 +18,7 @@ const services = [
     icon: Cloud,
     title: "DevOps",
     description:
-      "Conception et exploitation d'infrastructures auto-hébergées avec Docker, Coolify, Linux et CI/CD.",
+      "Conception et exploitation d'infrastructures auto-hébergées avec Docker, Coolify et CI/CD.",
   },
 ];
 

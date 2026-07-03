@@ -27,7 +27,11 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { basePath } from "@/lib/utils";
-import type { profile as profileContent, timeline, projects as projectsContent } from "@/lib/content";
+import type {
+  profile as profileContent,
+  timeline,
+  projects as projectsContent,
+} from "@/lib/content";
 
 export default function PortfolioClient({
   profile,
@@ -126,7 +130,10 @@ export default function PortfolioClient({
                       </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
-                      <div className="absolute -left-[9999px]" aria-hidden="true">
+                      <div
+                        className="absolute -left-[9999px]"
+                        aria-hidden="true"
+                      >
                         <Label htmlFor="website">Website</Label>
                         <Input
                           id="website"
@@ -212,19 +219,6 @@ export default function PortfolioClient({
                 </a>
               </Button>
             </div>
-
-            {profile?.email && (
-              <p className="text-sm text-muted-foreground mb-12">
-                Ou écrivez-moi directement à{" "}
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="underline hover:text-foreground transition-colors inline-flex items-center gap-1"
-                >
-                  <Mail className="h-3.5 w-3.5" />
-                  {profile.email}
-                </a>
-              </p>
-            )}
 
             <section className="py-12 text-left">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
@@ -315,7 +309,7 @@ export default function PortfolioClient({
               <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-gray-500">
                 <p>
                   © {new Date().getFullYear()}{" "}
-                  {profile?.full_name || "CRÉPIN Christopher"}. Tous droits
+                  {profile?.full_name || "CRÉPIN Christopher"} - Tous droits
                   réservés
                 </p>
                 <span aria-hidden="true">·</span>
@@ -329,97 +323,98 @@ export default function PortfolioClient({
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[600px] h-[80vh] flex flex-col overflow-hidden">
-                  <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2">
-                      <Scale className="h-5 w-5" />
-                      Mentions Légales
-                    </DialogTitle>
-                    <DialogDescription className="sr-only">
-                      Informations légales concernant l&apos;éditeur, l&apos;hébergement et la protection des données du site.
-                    </DialogDescription>
-                  </DialogHeader>
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-2">
+                        <Scale className="h-5 w-5" />
+                        Mentions Légales
+                      </DialogTitle>
+                      <DialogDescription className="sr-only">
+                        Informations légales concernant l&apos;éditeur,
+                        l&apos;hébergement et la protection des données du site.
+                      </DialogDescription>
+                    </DialogHeader>
 
-                  <ScrollArea className="flex-1 min-h-0 pr-4 text-sm text-muted-foreground leading-relaxed text-left">
-                    <div className="space-y-6 py-4">
-                      <section>
-                        <h4 className="font-bold text-foreground mb-2">
-                          1. Édition du site
-                        </h4>
-                        <p>
-                          <strong>Responsable de la publication :</strong>{" "}
-                          Christopher Crépin
-                          <br />
-                          <strong>Statut :</strong> Entrepreneur individuel —
-                          immatriculation en cours (SIRET en cours
-                          d&apos;attribution)
-                          <br />
-                          <strong>Localisation :</strong> Le Mans (72), France
-                          <br />
-                          <strong>Contact :</strong>{" "}
-                          {profile?.email || "christopher.crepin.72000@gmail.com"}
-                        </p>
-                      </section>
-
-                      <section>
-                        <h4 className="font-bold text-foreground mb-2">
-                          2. Hébergement
-                        </h4>
-                        <p>
-                          Le site est auto-hébergé par l&apos;éditeur
-                          lui-même, sur une infrastructure personnelle, via
-                          une connexion à internet fournie par{" "}
-                          <strong>Free SAS</strong> (groupe Iliad).
-                        </p>
-                      </section>
-
-                      <section>
-                        <h4 className="font-bold text-foreground mb-2">
-                          3. Propriété intellectuelle
-                        </h4>
-                        <p>
-                          Sauf mention contraire, tous les contenus (textes,
-                          images, logos, code) présents sur ce site sont la
-                          propriété exclusive de l&apos;éditeur. Toute
-                          reproduction, même partielle, est interdite sans
-                          accord préalable.
-                        </p>
-                      </section>
-
-                      <section>
-                        <h4 className="font-bold text-foreground mb-2">
-                          4. Protection des données (RGPD)
-                        </h4>
-                        <p>
-                          Ce site ne dépose aucun cookie de mesure d&apos;audience
-                          ou de suivi publicitaire. Les seules données
-                          personnelles collectées sont celles transmises
-                          volontairement via le formulaire de contact (email
-                          et message), dans le but unique de répondre à votre
-                          demande. Ces données sont transmises via un webhook
-                          Discord utilisé comme outil de notification interne,
-                          puis supprimées une fois la demande traitée. Discord
-                          Inc. étant basé aux États-Unis, cette transmission
-                          constitue un transfert de données hors Union
-                          européenne, encadré par les clauses contractuelles
-                          types de Discord.
-                          <br />
-                          <br />
-                          Conformément au RGPD, vous disposez d&apos;un droit
-                          d&apos;accès, de rectification et de suppression de
-                          ces données, exerçable à tout moment auprès de{" "}
-                          <strong>
+                    <ScrollArea className="flex-1 min-h-0 pr-4 text-sm text-muted-foreground leading-relaxed text-left">
+                      <div className="space-y-6 py-4">
+                        <section>
+                          <h4 className="font-bold text-foreground mb-2">
+                            1. Édition du site
+                          </h4>
+                          <p>
+                            <strong>Responsable de la publication :</strong>{" "}
+                            Christopher Crépin
+                            <br />
+                            <strong>Statut :</strong> Entrepreneur individuel —
+                            immatriculation en cours (SIRET en cours
+                            d&apos;attribution)
+                            <br />
+                            <strong>Localisation :</strong> Le Mans (72), France
+                            <br />
+                            <strong>Contact :</strong>{" "}
                             {profile?.email ||
                               "christopher.crepin.72000@gmail.com"}
-                          </strong>
-                          . Vous disposez également du droit d&apos;introduire
-                          une réclamation auprès de la{" "}
-                          <strong>CNIL</strong> (www.cnil.fr) si vous estimez
-                          que le traitement de vos données ne respecte pas la
-                          réglementation.
-                        </p>
-                      </section>
-                    </div>
-                  </ScrollArea>
+                          </p>
+                        </section>
+
+                        <section>
+                          <h4 className="font-bold text-foreground mb-2">
+                            2. Hébergement
+                          </h4>
+                          <p>
+                            Le site est auto-hébergé par l&apos;éditeur
+                            lui-même, sur une infrastructure personnelle, via
+                            une connexion à internet fournie par{" "}
+                            <strong>Free SAS</strong> (groupe Iliad).
+                          </p>
+                        </section>
+
+                        <section>
+                          <h4 className="font-bold text-foreground mb-2">
+                            3. Propriété intellectuelle
+                          </h4>
+                          <p>
+                            Sauf mention contraire, tous les contenus (textes,
+                            images, logos, code) présents sur ce site sont la
+                            propriété exclusive de l&apos;éditeur. Toute
+                            reproduction, même partielle, est interdite sans
+                            accord préalable.
+                          </p>
+                        </section>
+
+                        <section>
+                          <h4 className="font-bold text-foreground mb-2">
+                            4. Protection des données (RGPD)
+                          </h4>
+                          <p>
+                            Ce site ne dépose aucun cookie de mesure
+                            d&apos;audience ou de suivi publicitaire. Les seules
+                            données personnelles collectées sont celles
+                            transmises volontairement via le formulaire de
+                            contact (email et message), dans le but unique de
+                            répondre à votre demande. Ces données sont
+                            transmises via un webhook Discord utilisé comme
+                            outil de notification interne, puis supprimées une
+                            fois la demande traitée. Discord Inc. étant basé aux
+                            États-Unis, cette transmission constitue un
+                            transfert de données hors Union européenne, encadré
+                            par les clauses contractuelles types de Discord.
+                            <br />
+                            <br />
+                            Conformément au RGPD, vous disposez d&apos;un droit
+                            d&apos;accès, de rectification et de suppression de
+                            ces données, exerçable à tout moment auprès de{" "}
+                            <strong>
+                              {profile?.email ||
+                                "christopher.crepin.72000@gmail.com"}
+                            </strong>
+                            . Vous disposez également du droit d&apos;introduire
+                            une réclamation auprès de la <strong>CNIL</strong>{" "}
+                            (www.cnil.fr) si vous estimez que le traitement de
+                            vos données ne respecte pas la réglementation.
+                          </p>
+                        </section>
+                      </div>
+                    </ScrollArea>
                   </DialogContent>
                 </Dialog>
               </div>
