@@ -24,6 +24,7 @@ import { ServicesSection } from "@/components/services-section";
 import { ProcessSection } from "@/components/process-section";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { basePath } from "@/lib/utils";
 import type { profile as profileContent, timeline, projects as projectsContent } from "@/lib/content";
@@ -327,7 +328,7 @@ export default function PortfolioClient({
                       Mentions légales
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[600px] max-h-[80vh] flex flex-col overflow-hidden">
+                  <DialogContent className="sm:max-w-[600px] h-[80vh] flex flex-col overflow-hidden">
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
                       <Scale className="h-5 w-5" />
@@ -338,7 +339,7 @@ export default function PortfolioClient({
                     </DialogDescription>
                   </DialogHeader>
 
-                  <div className="flex-1 min-h-0 overflow-y-auto pr-4 text-sm text-muted-foreground leading-relaxed text-left">
+                  <ScrollArea className="flex-1 min-h-0 pr-4 text-sm text-muted-foreground leading-relaxed text-left">
                     <div className="space-y-6 py-4">
                       <section>
                         <h4 className="font-bold text-foreground mb-2">
@@ -418,7 +419,7 @@ export default function PortfolioClient({
                         </p>
                       </section>
                     </div>
-                  </div>
+                  </ScrollArea>
                   </DialogContent>
                 </Dialog>
               </div>
