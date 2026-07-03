@@ -1,4 +1,10 @@
-import { profile, timeline, skillsByCategory, projects } from "@/lib/content";
+import {
+  profile,
+  timeline,
+  skillsByCategory,
+  projects,
+  personalPhotos,
+} from "@/lib/content";
 import PortfolioClient from "@/components/portfolio-client";
 
 export default function Page() {
@@ -8,6 +14,7 @@ export default function Page() {
       timelineData={timeline}
       skillsByCategory={skillsByCategory}
       projects={projects}
+      personalPhotos={personalPhotos}
     />
   );
 }

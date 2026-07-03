@@ -67,6 +67,15 @@ export const skillsByCategory = [
   },
 ];
 
+export const personalPhotos = [
+  { image: null as string | null, caption: "Légende à ajouter" },
+  { image: null as string | null, caption: "Légende à ajouter" },
+  { image: null as string | null, caption: "Légende à ajouter" },
+  { image: null as string | null, caption: "Légende à ajouter" },
+  { image: null as string | null, caption: "Légende à ajouter" },
+  { image: null as string | null, caption: "Légende à ajouter" },
+];
+
 export const projects = [
   {
     id: 1,
