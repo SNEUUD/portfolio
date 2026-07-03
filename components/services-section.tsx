@@ -12,13 +12,13 @@ const services = [
     icon: Database,
     title: "Back-end & APIs",
     description:
-      "APIs et logique métier robustes avec Node.js, PHP, Python, Prisma, PostgreSQL et GraphQL.",
+      "APIs avec Node.js, PHP, Python, Prisma, PostgreSQL et GraphQL.",
   },
   {
     icon: Cloud,
     title: "DevOps",
     description:
-      "Conception et exploitation d'infrastructures auto-hébergées : Docker, Coolify, Linux et CI/CD.",
+      "Conception et exploitation d'infrastructures auto-hébergées avec Docker, Coolify, Linux et CI/CD.",
   },
 ];
 

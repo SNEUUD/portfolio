@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, Scale } from "lucide-react";
 import { ModeToggle } from "@/components/theme-button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -50,6 +51,7 @@ export default function PortfolioClient({
     const data = {
       email: formData.get("email"),
       message: formData.get("message"),
+      website: formData.get("website"),
     };
 
     try {
@@ -118,8 +120,21 @@ export default function PortfolioClient({
                   <form onSubmit={handleSubmit}>
                     <DialogHeader>
                       <DialogTitle>Me contacter</DialogTitle>
+                      <DialogDescription className="sr-only">
+                        Formulaire pour envoyer un message par email.
+                      </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
+                      <div className="absolute -left-[9999px]" aria-hidden="true">
+                        <Label htmlFor="website">Website</Label>
+                        <Input
+                          id="website"
+                          name="website"
+                          type="text"
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </div>
                       <div className="grid gap-3">
                         <Label htmlFor="email">Email</Label>
                         <Input
@@ -296,11 +311,117 @@ export default function PortfolioClient({
             </section>
 
             <footer className="text-center px-4">
-              <p className="text-xs sm:text-sm text-gray-500">
-                © {new Date().getFullYear()}{" "}
-                {profile?.full_name || "CRÉPIN Christopher"}. Tous droits
-                réservés.
-              </p>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-gray-500">
+                <p>
+                  © {new Date().getFullYear()}{" "}
+                  {profile?.full_name || "CRÉPIN Christopher"}. Tous droits
+                  réservés
+                </p>
+                <span aria-hidden="true">·</span>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      variant="link"
+                      className="h-auto p-0 text-xs sm:text-sm text-muted-foreground hover:text-foreground"
+                    >
+                      Mentions légales
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] max-h-[80vh] flex flex-col overflow-hidden">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Scale className="h-5 w-5" />
+                      Mentions Légales
+                    </DialogTitle>
+                    <DialogDescription className="sr-only">
+                      Informations légales concernant l&apos;éditeur, l&apos;hébergement et la protection des données du site.
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="flex-1 min-h-0 overflow-y-auto pr-4 text-sm text-muted-foreground leading-relaxed text-left">
+                    <div className="space-y-6 py-4">
+                      <section>
+                        <h4 className="font-bold text-foreground mb-2">
+                          1. Édition du site
+                        </h4>
+                        <p>
+                          <strong>Responsable de la publication :</strong>{" "}
+                          Christopher Crépin
+                          <br />
+                          <strong>Statut :</strong> Entrepreneur individuel —
+                          immatriculation en cours (SIRET en cours
+                          d&apos;attribution)
+                          <br />
+                          <strong>Localisation :</strong> Le Mans (72), France
+                          <br />
+                          <strong>Contact :</strong>{" "}
+                          {profile?.email || "christopher.crepin.72000@gmail.com"}
+                        </p>
+                      </section>
+
+                      <section>
+                        <h4 className="font-bold text-foreground mb-2">
+                          2. Hébergement
+                        </h4>
+                        <p>
+                          Le site est auto-hébergé par l&apos;éditeur
+                          lui-même, sur une infrastructure personnelle, via
+                          une connexion à internet fournie par{" "}
+                          <strong>Free SAS</strong> (groupe Iliad).
+                        </p>
+                      </section>
+
+                      <section>
+                        <h4 className="font-bold text-foreground mb-2">
+                          3. Propriété intellectuelle
+                        </h4>
+                        <p>
+                          Sauf mention contraire, tous les contenus (textes,
+                          images, logos, code) présents sur ce site sont la
+                          propriété exclusive de l&apos;éditeur. Toute
+                          reproduction, même partielle, est interdite sans
+                          accord préalable.
+                        </p>
+                      </section>
+
+                      <section>
+                        <h4 className="font-bold text-foreground mb-2">
+                          4. Protection des données (RGPD)
+                        </h4>
+                        <p>
+                          Ce site ne dépose aucun cookie de mesure d&apos;audience
+                          ou de suivi publicitaire. Les seules données
+                          personnelles collectées sont celles transmises
+                          volontairement via le formulaire de contact (email
+                          et message), dans le but unique de répondre à votre
+                          demande. Ces données sont transmises via un webhook
+                          Discord utilisé comme outil de notification interne,
+                          puis supprimées une fois la demande traitée. Discord
+                          Inc. étant basé aux États-Unis, cette transmission
+                          constitue un transfert de données hors Union
+                          européenne, encadré par les clauses contractuelles
+                          types de Discord.
+                          <br />
+                          <br />
+                          Conformément au RGPD, vous disposez d&apos;un droit
+                          d&apos;accès, de rectification et de suppression de
+                          ces données, exerçable à tout moment auprès de{" "}
+                          <strong>
+                            {profile?.email ||
+                              "christopher.crepin.72000@gmail.com"}
+                          </strong>
+                          . Vous disposez également du droit d&apos;introduire
+                          une réclamation auprès de la{" "}
+                          <strong>CNIL</strong> (www.cnil.fr) si vous estimez
+                          que le traitement de vos données ne respecte pas la
+                          réglementation.
+                        </p>
+                      </section>
+                    </div>
+                  </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </footer>
           </section>
         </div>
