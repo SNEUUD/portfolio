@@ -25,14 +25,11 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto px-4">
-      {steps.map(({ icon: Icon, title, description }, index) => (
-        <div key={title} className="text-center">
-          <div className="mx-auto mb-3 flex size-10 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold">
-            {index + 1}
-          </div>
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+      {steps.map(({ icon: Icon, title, description }) => (
+        <div key={title}>
           <Icon
-            className="h-5 w-5 mx-auto mb-2 text-muted-foreground"
+            className="h-4 w-4 mb-2 text-muted-foreground"
             aria-hidden="true"
           />
           <h3 className="font-semibold text-sm mb-1">{title}</h3>
