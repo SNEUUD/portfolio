@@ -107,7 +107,6 @@ export default function PortfolioClient({
             )}
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-8">
               {profile?.location && <span>{profile.location}</span>}
-              {profile?.modality && <span>{profile.modality}</span>}
               {profile?.languages && <span>{profile.languages}</span>}
             </div>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-8 mb-4 max-w-2xl mx-auto">
@@ -169,7 +168,7 @@ export default function PortfolioClient({
                   href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/CV.pdf`}
                   download="CV-Christopher-Crepin.pdf"
                 >
-                  Télécharger mon CV
+                  CV
                 </a>
               </Button>
               <Button asChild variant="outline" className="w-full sm:w-auto">

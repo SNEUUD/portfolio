@@ -16,9 +16,9 @@ const services = [
   },
   {
     icon: Cloud,
-    title: "Infrastructure & DevOps",
+    title: "DevOps",
     description:
-      "Conception et exploitation d'infrastructures auto-hébergées : Docker, Coolify, Traefik, Linux et CI/CD.",
+      "Conception et exploitation d'infrastructures auto-hébergées : Docker, Coolify, Linux et CI/CD.",
   },
 ];
 
@@ -43,9 +43,6 @@ export function ServicesSection() {
           </Card>
         ))}
       </div>
-      <p className="text-sm text-muted-foreground text-center mt-6">
-        Missions ponctuelles ou récurrentes, en régie ou au forfait.
-      </p>
     </div>
   );
 }
