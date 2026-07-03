@@ -23,7 +23,13 @@ interface Project {
   image?: string | null;
 }
 
-function ProjectImage({ image, name }: { image?: string | null; name: string }) {
+function ProjectImage({
+  image,
+  name,
+}: {
+  image?: string | null;
+  name: string;
+}) {
   if (!image) return null;
   return (
     <div className="relative h-40 w-full overflow-hidden border-b border-border">
