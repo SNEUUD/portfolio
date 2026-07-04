@@ -79,3 +79,16 @@ export const projects = [
     image: null as string | null,
   }
 ];
+
+// Section « Hors écran » — ce qui m'anime en dehors du développement.
+export const interests = {
+  intro:
+    "En dehors du code, trois passions rythment mon quotidien et nourrissent ma façon de travailler. L'automobile d'abord, une culture que j'ai transformée en spécialité, du journalisme automobile jusqu'à Staylow, ma plateforme dédiée aux événements auto. La course ensuite, pour le goût de la performance et de la précision, à commencer par les 24 Heures du Mans, dans ma ville. La photographie enfin, qui m'exerce au cadrage, à la lumière et au sens du détail, autant de réflexes que je retrouve dans la conception d'interfaces.",
+  // Déposez vos images dans public/photos/ puis renseignez `src` (ex. "/photos/le-mans.jpg").
+  // Tant que `src` est vide, une vignette légendée s'affiche à la place.
+  photos: [
+    { src: null, caption: "Sur le circuit des 24 Heures du Mans" },
+    { src: null, caption: "Course auto, l'ambiance des paddocks" },
+    { src: null, caption: "Prise de vue en bord de piste" },
+  ] as { src: string | null; caption: string }[],
+};
