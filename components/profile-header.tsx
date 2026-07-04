@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Github, Linkedin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ContactDialog } from "@/components/contact-dialog";
 import { basePath } from "@/lib/utils";
@@ -6,6 +7,9 @@ import type { profile as profileContent } from "@/lib/content";
 
 const linkClass =
   "text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors";
+
+const iconLinkClass =
+  "text-muted-foreground hover:text-foreground transition-colors";
 
 export function ProfileHeader({ profile }: { profile: typeof profileContent }) {
   return (
@@ -62,17 +66,19 @@ export function ProfileHeader({ profile }: { profile: typeof profileContent }) {
           href={profile?.linkedin_url}
           target="_blank"
           rel="noopener noreferrer"
-          className={linkClass}
+          aria-label="LinkedIn"
+          className={iconLinkClass}
         >
-          LinkedIn
+          <Linkedin className="size-5" />
         </a>
         <a
           href={profile?.github_url}
           target="_blank"
           rel="noopener noreferrer"
-          className={linkClass}
+          aria-label="GitHub"
+          className={iconLinkClass}
         >
-          GitHub
+          <Github className="size-5" />
         </a>
       </div>
     </div>
