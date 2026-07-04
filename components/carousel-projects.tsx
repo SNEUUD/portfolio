@@ -53,7 +53,7 @@ function ProjectCard({
   const techArray = project.tech.split(",").map((t) => t.trim());
 
   return (
-    <Card className="group relative border border-border bg-card rounded-2xl h-[560px] flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md">
+    <Card className="group relative border border-border bg-card rounded-xl h-[560px] flex flex-col overflow-hidden shadow-none transition-colors duration-300 hover:bg-accent/50">
       <ProjectImage image={project.image} name={project.name} />
       <CardContent className="p-4 sm:p-6 lg:p-8 flex flex-col flex-grow gap-4 sm:gap-6">
         <div className="space-y-1">

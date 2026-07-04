@@ -87,37 +87,45 @@ export default function PortfolioClient({
 
   return (
     <div className="min-h-screen">
-      <main className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-4xl mx-auto">
-          <section className="text-center">
-            {profile?.avatar_url && (
-              <Image
-                src={profile.avatar_url}
-                alt={profile.full_name || "Photo de profil"}
-                width={112}
-                height={112}
-                className="mx-auto mb-6 rounded-full object-cover size-28"
-              />
-            )}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-gray-50 mb-6">
-              {profile?.full_name}
-            </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-3 px-4 sm:px-0">
-              {profile?.title}
+      <main className="container mx-auto px-4 py-20 sm:py-28 lg:py-32">
+        <div className="max-w-3xl mx-auto">
+          <section>
+            <div className="flex items-center gap-5 mb-8">
+              {profile?.avatar_url && (
+                <Image
+                  src={profile.avatar_url}
+                  alt={profile.full_name || "Photo de profil"}
+                  width={72}
+                  height={72}
+                  className="rounded-full object-cover size-16 sm:size-18 shrink-0"
+                />
+              )}
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-1">
+                  {profile?.full_name}
+                </h1>
+                <p className="text-base sm:text-lg text-muted-foreground">
+                  {profile?.title}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
+              {profile?.bio}
             </p>
-            {profile?.availability && (
-              <Badge variant="secondary" className="mb-4">
-                {profile.availability}
-              </Badge>
-            )}
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-8">
+
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-10">
               {profile?.location && <span>{profile.location}</span>}
               {profile?.languages && <span>{profile.languages}</span>}
+              {profile?.availability && (
+                <Badge variant="secondary">{profile.availability}</Badge>
+              )}
             </div>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-8 mb-4 max-w-2xl mx-auto">
+
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-16 sm:mb-20 text-sm">
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="default" className="w-full sm:w-auto">
+                  <Button variant="default" size="sm">
                     Me contacter
                   </Button>
                 </DialogTrigger>
@@ -184,87 +192,74 @@ export default function PortfolioClient({
                   </form>
                 </DialogContent>
               </Dialog>
-              <Button asChild variant="outline" className="w-full sm:w-auto">
-                <a
-                  href={`${basePath}/CV.pdf`}
-                  download="CV-Christopher-Crepin.pdf"
-                >
-                  CV
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="w-full sm:w-auto">
-                <a
-                  href={`${basePath}/CV-ATS.pdf`}
-                  download="CV-Christopher-Crepin-ATS.pdf"
-                >
-                  CV (format ATS)
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="w-full sm:w-auto">
-                <a
-                  href={profile?.linkedin_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="w-full sm:w-auto">
-                <a
-                  href={profile?.github_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              </Button>
+              <a
+                href={`${basePath}/CV.pdf`}
+                download="CV-Christopher-Crepin.pdf"
+                className="text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                CV
+              </a>
+              <a
+                href={`${basePath}/CV-ATS.pdf`}
+                download="CV-Christopher-Crepin-ATS.pdf"
+                className="text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                CV (format ATS)
+              </a>
+              <a
+                href={profile?.linkedin_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={profile?.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
+              >
+                GitHub
+              </a>
             </div>
 
-            <section className="py-12 text-left">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
-                À propos de moi
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 text-center">
-                {profile?.bio}
-              </p>
-            </section>
-
-            <section className="py-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
+            <section className="py-16 sm:py-20 border-t border-border">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
                 Services
               </h2>
               <ServicesSection />
             </section>
 
-            <section className="py-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
+            <section className="py-16 sm:py-20 border-t border-border">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
                 Comment je travaille
               </h2>
               <ProcessSection />
             </section>
 
-            <section className="py-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6">
+            <section className="py-16 sm:py-20 border-t border-border">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
                 Mes projets
               </h2>
               <CarouselProjects projects={projects} />
             </section>
 
-            <section className="py-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-10">
+            <section className="py-16 sm:py-20 border-t border-border">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
                 Mes compétences
               </h2>
-              <div className="flex flex-col gap-6 max-w-4xl mx-auto px-4">
+              <div className="flex flex-col gap-8">
                 {skillsByCategory.map(({ category, skills }) => (
                   <div key={category}>
-                    <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3 text-left">
+                    <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
                       {category}
                     </h3>
-                    <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+                    <div className="flex flex-wrap gap-2">
                       {skills.map((skill) => (
                         <div
                           key={skill}
-                          className="w-[calc(33.333%-0.5rem)] sm:w-[calc(20%-1rem)] min-w-[100px] sm:min-w-[120px] p-2 sm:p-3 text-xs sm:text-sm font-semibold text-center rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                          className="px-3 py-1.5 text-sm rounded-full border border-border text-foreground hover:bg-accent transition-colors"
                         >
                           {skill}
                         </div>
@@ -275,27 +270,27 @@ export default function PortfolioClient({
               </div>
             </section>
 
-            <section className="py-12">
-              <h2 className="text-4xl font-bold text-center mb-6">
+            <section className="py-16 sm:py-20 border-t border-border">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
                 Mon parcours
               </h2>
-              <div className="relative max-w-2xl mx-auto">
+              <div className="relative">
                 <Separator
                   orientation="vertical"
-                  className="bg-muted absolute left-2 top-4 h-full"
+                  className="bg-border absolute left-2 top-4 h-full"
                 />
                 {timelineData.map((entry, index) => (
                   <div key={index} className="relative mb-10 pl-8">
                     <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full z-10" />
-                    <h4 className="text-md text-muted-foreground tracking-tight text-left mb-1 pl-3">
+                    <h4 className="text-sm text-muted-foreground tracking-tight mb-1 pl-3">
                       {entry.date}
                     </h4>
-                    <h3 className="rounded-xl py-2 text-xl font-bold tracking-tight text-left pl-3">
+                    <h3 className="py-1 text-lg font-semibold tracking-tight pl-3">
                       {entry.title}
                     </h3>
-                    <Card className="my-3 border-none shadow-none text-left">
+                    <Card className="my-3 border-none shadow-none">
                       <CardContent className="px-3">
-                        <p className="text-foreground whitespace-pre-line">
+                        <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                           {entry.content}
                         </p>
                       </CardContent>
@@ -305,8 +300,8 @@ export default function PortfolioClient({
               </div>
             </section>
 
-            <footer className="text-center px-4">
-              <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-gray-500">
+            <footer className="pt-12 border-t border-border">
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                 <p>
                   © {new Date().getFullYear()}{" "}
                   {profile?.full_name || "CRÉPIN Christopher"} - Tous droits
