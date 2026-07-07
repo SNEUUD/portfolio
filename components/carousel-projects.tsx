@@ -97,7 +97,7 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
           <div className="w-full max-w-md">
             <ProjectCard
               project={projects[0]}
-              descriptionClassName="text-sm text-muted-foreground leading-relaxed overflow-hidden text-ellipsis line-clamp-4 flex-grow"
+              descriptionClassName="text-sm text-muted-foreground leading-relaxed overflow-hidden text-ellipsis line-clamp-4 flex-grow text-justify"
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ export function CarouselProjects({ projects }: { projects: Project[] }) {
             <div className="p-1 flex-1">
               <ProjectCard
                 project={project}
-                descriptionClassName="text-sm text-muted-foreground leading-relaxed line-clamp-3 sm:line-clamp-4 flex-grow"
+                descriptionClassName="text-sm text-muted-foreground leading-relaxed line-clamp-3 sm:line-clamp-4 flex-grow text-justify"
               />
             </div>
           </CarouselItem>

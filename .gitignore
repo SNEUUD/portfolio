@@ -40,6 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# CV (contains personal data such as phone/address, kept out of git)
-/public/CV.pdf
-/public/CV-ATS.pdf
+/public

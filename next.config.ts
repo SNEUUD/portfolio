@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  images: {
+    qualities: [60, 75, 85],
+  },
   async headers() {
     return [
       {
