@@ -87,8 +87,8 @@ export const interests = {
   // Déposez vos images dans public/photos/ puis renseignez `src` (ex. "/photos/le-mans.jpg").
   // Tant que `src` est vide, une vignette légendée s'affiche à la place.
   photos: [
-    { src: "/photos/photo4-web.jpg", caption: "Filé sur une Porsche 911 GT2, circuit des 24 Heures du Mans" },
-    { src: "/photos/photo5-web.jpg", caption: "Une autre 911 en piste, harnachée pour l'endurance" },
-    { src: "/photos/photo6-web.jpg", caption: "McLaren F1 GTR « Lark », pleine vitesse en ligne droite" },
+    { src: "/photos/photo4-web.jpg", caption: "Porsche 911 GT2, circuit des 24 Heures du Mans" },
+    { src: "/photos/photo5-web.jpg", caption: "Une autre 911, circuit des 24 Heures du Mans" },
+    { src: "/photos/photo6-web.jpg", caption: "McLaren F1 GTR « Lark », circuit des 24 Heures du Mans" },
   ] as { src: string | null; caption: string }[],
 };
