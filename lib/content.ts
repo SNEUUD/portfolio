@@ -16,7 +16,7 @@ export const timeline = [
     date: "2025 - en cours",
     title: "Mastère — Manager en architecture & applications logicielles des SI (BAC+5)",
     content:
-      "CESI  en alternance - Le Mans. Spécialité : Manager en architecture & applications logicielles des SI : méthodes et outils de gestion de projets.",
+      "CESI  en alternance - Le Mans. Spécialité : Manager en architecture & applications logicielles des SI : méthodes et outils de gestion de projets approfondis.",
   },
   {
     date: "2024 - 2025",
@@ -34,7 +34,7 @@ export const timeline = [
     date: "2021 - 2023",
     title: "BTS SIO — SLAM (BAC+2)",
     content:
-      "Saint Charles Sainte Croix - Le Mans. Spécialités Solutions Logicielles et Applications Métiers : développement, bases de données, gestion de projet informatique.",
+      "Saint Charles Sainte Croix - Le Mans. Spécialités Solutions Logicielles et Applications Métiers : développement, bases de données.",
   },
   {
     date: "2018 - 2021",
@@ -72,7 +72,7 @@ export const projects = [
     id: 1,
     name: "Staylow",
     description:
-      "Plateforme web full-stack de découverte d'événements automobiles (rencontres, trackdays) : carte interactive des événements, authentification, géocodage des lieux, stockage de fichiers (photos/affiches) et e-mails transactionnels.",
+      "Plateforme web full-stack de découverte d'événements automobiles (rencontres, trackdays) : carte interactive des événements, authentification, géocodage des lieux et stockage de fichiers (photos/affiches).",
     tech: "Next.js, TypeScript, Prisma, PostgreSQL, Docker, Coolify",
     link: "https://events.staylow.fr",
     role: "Projet personnel — conception, développement & infrastructure",
@@ -83,12 +83,12 @@ export const projects = [
 // Section « Hors écran » — ce qui m'anime en dehors du développement.
 export const interests = {
   intro:
-    "En dehors du code, trois passions rythment mon quotidien et nourrissent ma façon de travailler. L'automobile d'abord, une culture que j'ai transformée en spécialité, du journalisme automobile jusqu'à Staylow, ma plateforme dédiée aux événements auto. La course ensuite, pour le goût de la performance et de la précision, à commencer par les 24 Heures du Mans, dans ma ville. La photographie enfin, qui m'exerce au cadrage, à la lumière et au sens du détail, autant de réflexes que je retrouve dans la conception d'interfaces.",
+    "En dehors du code, il y a surtout trois choses : l'automobile, la course et la photo. L'automobile d'abord, une culture que je suis depuis longtemps, notamment avec Staylow, ma plateforme sur les événements automobiles. La course ensuite, avec les 24 Heures du Mans et plus largement l'endurance, qui me passionne. La photographie enfin, plus récente, une façon de mettre cette passion en images.",
   // Déposez vos images dans public/photos/ puis renseignez `src` (ex. "/photos/le-mans.jpg").
   // Tant que `src` est vide, une vignette légendée s'affiche à la place.
   photos: [
-    { src: "/photos/photo4-web.jpg", caption: "Porsche 911 GT2, circuit des 24 Heures du Mans" },
-    { src: "/photos/photo5-web.jpg", caption: "Une autre 911, circuit des 24 Heures du Mans" },
-    { src: "/photos/photo6-web.jpg", caption: "McLaren F1 GTR « Lark », circuit des 24 Heures du Mans" },
+    { src: "/photos/photo1-web.jpg", caption: "Porsche 911 GT2, circuit des 24 Heures du Mans" },
+    { src: "/photos/photo2-web.jpg", caption: "Une autre 911, circuit des 24 Heures du Mans" },
+    { src: "/photos/photo3-web.jpg", caption: "McLaren F1 GTR « Lark », circuit des 24 Heures du Mans" },
   ] as { src: string | null; caption: string }[],
 };

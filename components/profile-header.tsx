@@ -2,11 +2,7 @@ import Image from "next/image";
 import { Github, Linkedin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ContactDialog } from "@/components/contact-dialog";
-import { basePath } from "@/lib/utils";
 import type { profile as profileContent } from "@/lib/content";
-
-const linkClass =
-  "text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors";
 
 const iconLinkClass =
   "text-muted-foreground hover:text-foreground transition-colors";
@@ -48,20 +44,6 @@ export function ProfileHeader({ profile }: { profile: typeof profileContent }) {
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-16 sm:mb-20 text-sm">
         <ContactDialog />
-        <a
-          href={`${basePath}/CV.pdf`}
-          download="CV-Christopher-Crepin.pdf"
-          className={linkClass}
-        >
-          CV
-        </a>
-        <a
-          href={`${basePath}/CV-ATS.pdf`}
-          download="CV-Christopher-Crepin-ATS.pdf"
-          className={linkClass}
-        >
-          CV (format ATS)
-        </a>
         <a
           href={profile?.linkedin_url}
           target="_blank"
