@@ -34,7 +34,7 @@ export function ProfileHeader({ profile }: { profile: typeof profileContent }) {
         </div>
       </div>
 
-      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
+      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl text-justify">
         {profile?.bio}
       </p>
 

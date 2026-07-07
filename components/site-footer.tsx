@@ -53,7 +53,7 @@ export function SiteFooter({
               </DialogDescription>
             </DialogHeader>
 
-            <ScrollArea className="flex-1 min-h-0 pr-4 text-sm text-muted-foreground leading-relaxed text-left">
+            <ScrollArea className="flex-1 min-h-0 pr-4 text-sm text-muted-foreground leading-relaxed text-justify">
               <div className="space-y-6 py-4">
                 <section>
                   <h4 className="font-bold text-foreground mb-2">
