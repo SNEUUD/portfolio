@@ -21,17 +21,18 @@ export function PhotoGallery({
         {intro}
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
         {photos.map(({ src, caption }) => (
           <figure
             key={caption}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted"
+            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted basis-[calc(50%-0.375rem)] sm:basis-[calc(33.333%-0.667rem)] grow-0 shrink-0"
           >
             {src ? (
               <Image
                 src={src}
                 alt={caption}
                 fill
+                quality={60}
                 sizes="(max-width: 640px) 50vw, 33vw"
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
