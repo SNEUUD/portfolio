@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/reveal";
+
 interface SectionProps {
   title: string;
   children: React.ReactNode;
@@ -7,10 +9,12 @@ interface SectionProps {
 export function Section({ title, children }: SectionProps) {
   return (
     <section className="py-16 sm:py-20 border-t border-border">
-      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
-        {title}
-      </h2>
-      {children}
+      <Reveal>
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-8 sm:mb-10">
+          {title}
+        </h2>
+      </Reveal>
+      <Reveal delay={100}>{children}</Reveal>
     </section>
   );
 }
