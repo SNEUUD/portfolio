@@ -102,6 +102,11 @@ export function ContactDialog() {
                 required
               />
             </div>
+            <p className="text-xs text-muted-foreground">
+              Votre email et votre message ne sont utilisés que pour répondre à
+              votre demande. Aucune donnée n&apos;est cédée à des tiers. Voir les
+              mentions légales pour en savoir plus.
+            </p>
           </div>
           <DialogFooter className="flex-col sm:flex-row gap-2">
             <DialogClose asChild>
