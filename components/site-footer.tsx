@@ -77,9 +77,19 @@ export function SiteFooter({
                     2. Hébergement
                   </h4>
                   <p>
-                    Le site est auto-hébergé par l&apos;éditeur lui-même, sur une
-                    infrastructure personnelle, via une connexion à internet
-                    fournie par <strong>Free SAS</strong> (groupe Iliad).
+                    Le site est hébergé sur un serveur privé virtuel (VPS) au
+                    sein de l&apos;infrastructure Staylow, loué auprès de :
+                    <br />
+                    <br />
+                    <strong>OVH SAS</strong>
+                    <br />
+                    Société par actions simplifiée au capital de 10 174 560 €,
+                    immatriculée au RCS de Lille Métropole sous le numéro 424 761
+                    419.
+                    <br />
+                    Siège social : 2 rue Kellermann — 59100 Roubaix, France
+                    <br />
+                    Téléphone : 1007 — Site web : www.ovhcloud.com
                   </p>
                 </section>
 
