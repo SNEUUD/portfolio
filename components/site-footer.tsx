@@ -77,19 +77,21 @@ export function SiteFooter({
                     2. Hébergement
                   </h4>
                   <p>
-                    Le site est hébergé sur un serveur privé virtuel (VPS) au
-                    sein de l&apos;infrastructure Staylow, loué auprès de :
+                    Le site est hébergé sur un serveur privé virtuel (VPS) loué
+                    auprès de :
                     <br />
                     <br />
-                    <strong>OVH SAS</strong>
-                    <br />
-                    Société par actions simplifiée au capital de 10 174 560 €,
-                    immatriculée au RCS de Lille Métropole sous le numéro 424 761
-                    419.
-                    <br />
-                    Siège social : 2 rue Kellermann — 59100 Roubaix, France
-                    <br />
-                    Téléphone : 1007 — Site web : www.ovhcloud.com
+                    <strong>OVH SAS</strong> — SAS au capital de 10 174 560 €,
+                    RCS Lille Métropole 424 761 419, siège 2 rue Kellermann 59100
+                    Roubaix, tél. 1007,{" "}
+                    <a
+                      href="https://www.ovhcloud.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-foreground"
+                    >
+                      www.ovhcloud.com
+                    </a>
                   </p>
                 </section>
 
@@ -114,7 +116,11 @@ export function SiteFooter({
                     suivi publicitaire. Les seules données personnelles collectées
                     sont celles transmises volontairement via le formulaire de
                     contact (email et message), dans le but unique de répondre à
-                    votre demande. Ces données sont transmises via un webhook
+                    votre demande. Votre adresse IP est traitée de manière
+                    temporaire à la seule fin de limiter les envois abusifs
+                    (protection anti-spam) ; elle n&apos;est ni conservée ni
+                    transmise à des tiers. Les données du formulaire sont
+                    transmises via un webhook
                     Discord utilisé comme outil de notification interne, puis
                     supprimées une fois la demande traitée. Discord Inc. étant basé
                     aux États-Unis, cette transmission constitue un transfert de
