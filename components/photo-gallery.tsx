@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Camera, ChevronLeft, ChevronRight, X } from "lucide-react";
 import {
@@ -32,20 +32,25 @@ export function PhotoGallery({
     setRatios((prev) => (prev[src] ? prev : { ...prev, [src]: width / height }));
   };
 
-  const showPrev = () =>
-    setOpenIndex((i) => (i === null ? i : (i - 1 + photos.length) % photos.length));
-  const showNext = () =>
-    setOpenIndex((i) => (i === null ? i : (i + 1) % photos.length));
+  const showPrev = useCallback(
+    () => setOpenIndex((i) => (i === null ? i : (i - 1 + photos.length) % photos.length)),
+    [photos.length]
+  );
+  const showNext = useCallback(
+    () => setOpenIndex((i) => (i === null ? i : (i + 1) % photos.length)),
+    [photos.length]
+  );
 
+  const isOpen = openIndex !== null;
   useEffect(() => {
-    if (openIndex === null) return;
+    if (!isOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") showPrev();
       if (e.key === "ArrowRight") showNext();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [openIndex, photos.length]);
+  }, [isOpen, showPrev, showNext]);
 
   const current = openIndex !== null ? photos[openIndex] : null;
 
