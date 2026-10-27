@@ -69,7 +69,7 @@ function ProjectCard({
 
         <div className="flex flex-wrap gap-1 sm:gap-1.5">
           {techArray.map((t) => (
-            <Badge key={t} variant="outline" className="text-xs">
+            <Badge key={t} variant="outline" className="text-xs font-mono">
               {t}
             </Badge>
           ))}
