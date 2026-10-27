@@ -14,7 +14,7 @@ export function SkillsSection({
             {skills.map((skill) => (
               <div
                 key={skill}
-                className="px-3 py-1.5 text-sm rounded-full border border-border text-foreground hover:bg-accent transition-colors"
+                className="px-3 py-1.5 text-sm font-mono rounded-full border border-border text-foreground hover:bg-accent transition-colors"
               >
                 {skill}
               </div>
